@@ -6,20 +6,24 @@
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.3.61"
+    kotlin("jvm") version "1.3.61"
 
     // Apply the application plugin to add support for building a CLI application.
     application
+
+    // Use kotlinx Serializer
+    kotlin("plugin.serialization") version "1.3.61"
 }
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    google()
     jcenter()
 }
 
 dependencies {
+    val kotlinVersion = "1.3.61"
+
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
@@ -34,6 +38,10 @@ dependencies {
 
     // Use Clikt cli interface
     implementation("com.github.ajalt:clikt:2.4.0")
+
+    // Use kotlinx Serializer
+    implementation(kotlin("stdlib", kotlinVersion))
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0")
 }
 
 application {

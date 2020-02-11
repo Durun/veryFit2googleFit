@@ -15,6 +15,7 @@ plugins {
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
+    google()
     jcenter()
 }
 
@@ -30,6 +31,9 @@ dependencies {
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+
+    // Use Clikt cli interface
+    implementation("com.github.ajalt:clikt:2.4.0")
 }
 
 application {

@@ -117,6 +117,7 @@ data class HealthSleepItemLog(
 		val year: Int,
 		val month: Int,
 		val day: Int,
+		val offsetMinute: Int,
 		val sleepStatus: Int,
 		@Serializable(with = LocalDateTimeSerializer::class) val date: LocalDateTime
 ) : VFitLog

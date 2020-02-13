@@ -24,12 +24,18 @@ data class Sleep private constructor(
 		}
 	}
 
-	data class Status(
+	data class Status private constructor(
 			val timeAt: LocalDateTime,
 			val depth: SleepDepth
 	) {
-		enum class SleepDepth {
-			AWAKE, LIGHT, DEEP
+		companion object {
+			fun of(timeAt: LocalDateTime, depth: SleepDepth): Status {
+				return Status(timeAt = timeAt, depth = depth)
+			}
+
+			enum class SleepDepth {
+				AWAKE, LIGHT, DEEP
+			}
 		}
 	}
 }

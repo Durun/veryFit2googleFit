@@ -3,6 +3,9 @@
  *
  * This generated file contains a sample Kotlin application project to get you started.
  */
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -40,11 +43,16 @@ dependencies {
     implementation("com.github.ajalt:clikt:2.4.0")
 
     // Use kotlinx Serializer
-    implementation(kotlin("stdlib", kotlinVersion))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0")
+    val kotlinSerializationVersion = "0.14.0"
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlinSerializationVersion")
 }
 
 application {
     // Define the main class for the application.
     mainClassName = "veryFit2googleFit.AppKt"
+}
+
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }

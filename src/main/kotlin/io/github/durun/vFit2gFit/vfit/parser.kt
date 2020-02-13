@@ -11,7 +11,7 @@ inline fun <reified T : VFitLog> Json.parseVFitLog(str: String): T {
 	//println("formatting: $str")
 	val jsonStr = str
 			.replace(Regex(".*?(\\{.*\\})$")) { it.groupValues[1] }
-			.replace("{", "{\"")
+			.replace(Regex("\\{(, )?"), "{\"")
 			.replace("=", "\":")
 			.replace(", ", ", \"")
 			.replace(Regex("$dayExpr $dayExpr \\d{2} \\d{2}:\\d{2}:\\d{2} GMT\\+\\d{2}:\\d{2} \\d{4}")) { "\"${it.value}\"" }

@@ -12,3 +12,24 @@ data class HeartRate(
 		}
 	}
 }
+
+data class Sleep private constructor(
+		val timeFrom: LocalDateTime,
+		val timeTo: LocalDateTime,
+		val statuses: List<Status>
+) {
+	companion object {
+		fun of(time: Pair<LocalDateTime, LocalDateTime>, statuses: List<Status>): Sleep {
+			return Sleep(timeFrom = time.first, timeTo = time.second, statuses = statuses)
+		}
+	}
+
+	data class Status(
+			val timeAt: LocalDateTime,
+			val depth: SleepDepth
+	) {
+		enum class SleepDepth {
+			AWAKE, LIGHT, DEEP
+		}
+	}
+}

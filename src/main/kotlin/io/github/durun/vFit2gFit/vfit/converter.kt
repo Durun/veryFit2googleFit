@@ -12,7 +12,7 @@ internal operator fun LocalDateTime.plus(duration: Duration): LocalDateTime = th
 
 @ExperimentalTime
 fun HeartRate.Companion.of(rateLog: HealthHeartRateLog, itemLogs: Iterable<HealthHeartRateItemLog>): List<HeartRate> {
-	val startTime = rateLog.date + 1.minutes
+	val startTime = rateLog.date + rateLog.startTime.minutes
 
 	var currentTime = startTime
 	return itemLogs.toList().map { log ->

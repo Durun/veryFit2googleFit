@@ -3,6 +3,7 @@ package io.github.durun.vFit2gFit.vfit
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonDecodingException
 import java.nio.file.Path
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -29,8 +30,18 @@ inline fun <reified G : VFitLog, reified T : VFitLog> VFitLogProvider.fetchGroup
 			.flatMap { line ->
 				val groupStrings = line.extractVFitLogString(getKey<G>()).toList()
 				val itemStrings = line.extractVFitLogString(getKey<T>()).toList()
-				val groups = groupStrings.map { json.parseVFitLog<G>(it) }
-				val items = itemStrings.map { json.parseVFitLog<T>(it) }
+				val groups = groupStrings
+						.map {  str ->
+							runCatching { json.parseVFitLog<G>(str) }
+									.onFailure { println("Parse failed: $str") }
+									.getOrThrow()
+						}
+				val items = itemStrings
+						.map {  str ->
+							runCatching { json.parseVFitLog<T>(str) }
+									.onFailure { println("Parse failed: $str") }
+									.getOrThrow()
+						}
 				(groups + items).asSequence()
 			}    // giiigiigigiiigii...
 			.splitByInstance<G, T, VFitLog>()

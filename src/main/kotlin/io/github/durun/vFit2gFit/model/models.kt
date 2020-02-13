@@ -1,4 +1,4 @@
-package veryFit2googleFit.model
+package io.github.durun.vFit2gFit.model
 
 import java.time.LocalDateTime
 

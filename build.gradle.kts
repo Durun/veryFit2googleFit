@@ -5,7 +5,8 @@
  */
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-
+group = "io.github.durun"
+version = "0.1-SNAPSHOT"
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -16,6 +17,9 @@ plugins {
 
     // Use kotlinx Serializer
     kotlin("plugin.serialization") version "1.3.61"
+
+    // To generate fatJar
+    id("com.github.johnrengelman.shadow") version "5.2.0"
 }
 
 repositories {
@@ -56,7 +60,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = "veryFit2googleFit.AppKt"
+    mainClassName = "io.github.durun.vFit2gFit.AppKt"
 }
 
 val compileKotlin: KotlinCompile by tasks

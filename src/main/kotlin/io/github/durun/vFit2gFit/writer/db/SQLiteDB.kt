@@ -1,4 +1,4 @@
-package veryFit2googleFit.writer.db
+package io.github.durun.vFit2gFit.writer.db
 
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.TransactionManager
@@ -19,6 +19,6 @@ object SQLiteDB {
 
 	fun of(path: Path): Database {
 		val file = path.toFile().takeIf { it.isFile } ?: Files.createFile(path).toFile()
-		return SQLiteDB.of(file)
+		return of(file)
 	}
 }

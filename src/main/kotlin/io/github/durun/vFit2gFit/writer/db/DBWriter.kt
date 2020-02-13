@@ -1,13 +1,13 @@
-package veryFit2googleFit.writer.db
+package io.github.durun.vFit2gFit.writer.db
 
+import io.github.durun.vFit2gFit.model.HeartRate
+import io.github.durun.vFit2gFit.writer.db.table.HeartRateTable
+import io.github.durun.vFit2gFit.writer.db.table.HeartRateTable.bpm
+import io.github.durun.vFit2gFit.writer.db.table.HeartRateTable.timeAt
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.transactions.transaction
-import veryFit2googleFit.model.HeartRate
-import veryFit2googleFit.writer.db.table.HeartRateTable
-import veryFit2googleFit.writer.db.table.HeartRateTable.bpm
-import veryFit2googleFit.writer.db.table.HeartRateTable.timeAt
 import java.io.File
 import java.nio.file.Path
 

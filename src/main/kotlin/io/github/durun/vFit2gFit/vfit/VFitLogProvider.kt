@@ -1,4 +1,4 @@
-package veryFit2googleFit.vfit
+package io.github.durun.vFit2gFit.vfit
 
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault

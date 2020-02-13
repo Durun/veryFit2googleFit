@@ -1,6 +1,6 @@
-package veryFit2googleFit.vfit
+package io.github.durun.vFit2gFit.vfit
 
-import veryFit2googleFit.model.HeartRate
+import io.github.durun.vFit2gFit.model.HeartRate
 import java.time.LocalDateTime
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime

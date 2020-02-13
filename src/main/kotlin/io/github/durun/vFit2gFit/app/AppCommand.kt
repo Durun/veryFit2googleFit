@@ -1,12 +1,12 @@
-package veryFit2googleFit.app
+package io.github.durun.vFit2gFit.app
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.types.path
+import io.github.durun.vFit2gFit.model.HeartRate
+import io.github.durun.vFit2gFit.vfit.*
+import io.github.durun.vFit2gFit.writer.db.DBWriter
 import kotlinx.serialization.ImplicitReflectionSerializer
-import veryFit2googleFit.model.HeartRate
-import veryFit2googleFit.vfit.*
-import veryFit2googleFit.writer.db.DBWriter
 import java.nio.file.Path
 import java.time.LocalDate
 import java.time.LocalDateTime

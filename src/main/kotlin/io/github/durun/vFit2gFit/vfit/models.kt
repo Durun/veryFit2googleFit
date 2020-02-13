@@ -1,10 +1,9 @@
-package veryFit2googleFit.vfit
+package io.github.durun.vFit2gFit.vfit
 
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*

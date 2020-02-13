@@ -59,15 +59,6 @@ fun <T> Sequence<T>.split(predicate: (T) -> Boolean): Sequence<Pair<T?, List<T>>
 	}
 }
 
-inline fun <reified T : VFitLog> getKey(): String {
-	return when (T::class) {
-		HealthHeartRateLog::class -> "HealthHeartRate"
-		HealthHeartRateItemLog::class -> "HealthHeartRateItem"
-		else -> throw Exception()
-	}
-}
-
-
 object VFitLogProviders {
 	fun fromFile(vfitRoot: Path): VFitLogProvider = FileVFitLogProvider(vfitRoot)
 }

@@ -42,6 +42,16 @@ object LocalDateTimeSerializer : KSerializer<LocalDateTime> {
 
 interface VFitLog
 
+inline fun <reified T : VFitLog> getKey(): String {
+	return when (T::class) {
+		HealthHeartRateLog::class -> "HealthHeartRate"
+		HealthHeartRateItemLog::class -> "HealthHeartRateItem"
+		HealthSleepLog::class -> "HealthSleep"
+		HealthSleepItemLog::class -> "HealthSleepItem"
+		else -> throw Exception()
+	}
+}
+
 @Serializable
 data class HealthHeartRateLog(
 		val rateDataId: Int,
@@ -79,5 +89,34 @@ data class HealthHeartRateItemLog(
 		val day: Int,
 		val offsetMinute: Int,
 		val HeartRaveValue: Int,
+		@Serializable(with = LocalDateTimeSerializer::class) val date: LocalDateTime
+) : VFitLog
+
+
+@Serializable
+data class HealthSleepLog(
+		val dId: Int,
+		val year: Int,
+		val month: Int,
+		val day: Int,
+		val sleepEndedTimeH: Int,
+		val sleepEndedTimeM: Int,
+		val totalSleepMinutes: Int,
+		val lightSleepCount: Int,
+		val deepSleepCount: Int,
+		val awakeCount: Int,
+		val lightSleepMinutes: Int,
+		val deepSleepMinutes: Int,
+		@Serializable(with = LocalDateTimeSerializer::class) val date: LocalDateTime
+) : VFitLog
+
+
+@Serializable
+data class HealthSleepItemLog(
+		val dId: Int,
+		val year: Int,
+		val month: Int,
+		val day: Int,
+		val sleepStatus: Int,
 		@Serializable(with = LocalDateTimeSerializer::class) val date: LocalDateTime
 ) : VFitLog

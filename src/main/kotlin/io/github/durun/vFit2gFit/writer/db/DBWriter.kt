@@ -1,9 +1,8 @@
 package io.github.durun.vFit2gFit.writer.db
 
 import io.github.durun.vFit2gFit.model.HeartRate
-import io.github.durun.vFit2gFit.writer.db.table.HeartRateTable
-import io.github.durun.vFit2gFit.writer.db.table.HeartRateTable.bpm
-import io.github.durun.vFit2gFit.writer.db.table.HeartRateTable.timeAt
+import io.github.durun.vFit2gFit.writer.db.HeartRateTable.bpm
+import io.github.durun.vFit2gFit.writer.db.HeartRateTable.timeAt
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.batchInsert

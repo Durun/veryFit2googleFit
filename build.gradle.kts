@@ -45,6 +45,13 @@ dependencies {
     // Use kotlinx Serializer
     val kotlinSerializationVersion = "0.14.0"
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlinSerializationVersion")
+
+    // Use DB library
+    val exposedVersion="0.20.1"
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+    implementation("org.xerial:sqlite-jdbc:3.21.0.1")
 }
 
 application {

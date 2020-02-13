@@ -8,6 +8,9 @@ import kotlin.time.minutes
 import kotlin.time.toJavaDuration
 
 @ExperimentalTime
+internal operator fun LocalDateTime.plus(duration: Duration): LocalDateTime = this + duration.toJavaDuration()
+
+@ExperimentalTime
 fun HeartRate.Companion.of(rateLog: HealthHeartRateLog, itemLogs: Iterable<HealthHeartRateItemLog>): List<HeartRate> {
 	val startTime = rateLog.date + 1.minutes
 
@@ -17,6 +20,3 @@ fun HeartRate.Companion.of(rateLog: HealthHeartRateLog, itemLogs: Iterable<Healt
 		HeartRate.of(bpm = log.HeartRaveValue, timeAt = currentTime)
 	}
 }
-
-@ExperimentalTime
-internal operator fun LocalDateTime.plus(duration: Duration): LocalDateTime = this + duration.toJavaDuration()

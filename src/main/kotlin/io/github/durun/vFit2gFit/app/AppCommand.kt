@@ -16,17 +16,15 @@ import kotlin.time.days
 import kotlin.time.toJavaDuration
 
 object AppCommand : CliktCommand() {
-	val veryfitRoot: Path by argument("veryfitRoot")
+	private val veryfitRoot: Path by argument("veryfitRoot")
 			.path(
 					exists = true,
 					fileOkay = false,
 					folderOkay = true,
 					readable = true
 			)
-	val dbPath: Path by argument("dbPath")
+	private val dbPath: Path by argument("dbPath")
 			.path(folderOkay = false)
-
-	var itemCount = 0
 
 	@ExperimentalTime
 	@ImplicitReflectionSerializer
@@ -37,7 +35,6 @@ object AppCommand : CliktCommand() {
 					writer.recordHeartRates(it)
 					writer.recordSleeps(it)
 				}
-		println("Total items: $itemCount")
 	}
 
 	@ExperimentalTime
@@ -48,7 +45,6 @@ object AppCommand : CliktCommand() {
 				.lastOrNull()
 		val heartRates = logs
 				?.let { (rate, item) ->
-					itemCount += item.size
 					println("$onDate HeartRate items: ${item.size}")
 					HeartRate.of(rate, item)
 				}
@@ -64,6 +60,7 @@ object AppCommand : CliktCommand() {
 				.lastOrNull()
 		val sleeps = logs
 				?.let { (sleep, items) ->
+					println("$onDate Sleep details: ${items.size}")
 					Sleep.of(sleep, items)
 				}
 				?.let { write(it) }

@@ -29,7 +29,8 @@ fun Sleep.Companion.of(sleepLog: HealthSleepLog, itemLogs: Iterable<HealthSleepI
 	val startTime = endTime - sleepLog.totalSleepMinutes.minutes
 
 	var currentTime = startTime
-	val statuses = itemLogs.toList().map { log ->
+	val logs = itemLogs.toList()
+	val statuses = logs.mapIndexed { index, log ->
 		currentTime += log.offsetMinute.minutes
 		val depth = when (log.sleepStatus) {
 			1 -> SleepDepth.AWAKE
@@ -37,7 +38,10 @@ fun Sleep.Companion.of(sleepLog: HealthSleepLog, itemLogs: Iterable<HealthSleepI
 			3 -> SleepDepth.DEEP
 			else -> throw IllegalArgumentException("sleepStatus is not 1 or 2 or 3.")
 		}
-		Sleep.Status.of(timeAt = currentTime, depth = depth)
+		val nextTime =
+				if (index < logs.lastIndex) currentTime + logs[index].offsetMinute.minutes
+				else endTime
+		Sleep.Status.of(time = currentTime to nextTime, depth = depth)
 	}
 	return Sleep.of(time = startTime to endTime, statuses = statuses)
 }

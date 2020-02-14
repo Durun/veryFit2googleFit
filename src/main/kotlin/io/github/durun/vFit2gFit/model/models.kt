@@ -25,16 +25,16 @@ data class Sleep private constructor(
 	}
 
 	data class Status private constructor(
-			val timeAt: LocalDateTime,
+			val timeRange: Pair<LocalDateTime, LocalDateTime>,
 			val depth: SleepDepth
 	) {
 		companion object {
-			fun of(timeAt: LocalDateTime, depth: SleepDepth): Status {
-				return Status(timeAt = timeAt, depth = depth)
+			fun of(time: Pair<LocalDateTime, LocalDateTime>, depth: SleepDepth): Status {
+				return Status(timeRange = time, depth = depth)
 			}
 
-			enum class SleepDepth {
-				AWAKE, LIGHT, DEEP
+			enum class SleepDepth(val value: Int) {
+				AWAKE(1), LIGHT(2), DEEP(3)
 			}
 		}
 	}

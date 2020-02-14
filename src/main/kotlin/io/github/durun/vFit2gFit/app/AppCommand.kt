@@ -66,7 +66,6 @@ object AppCommand : CliktCommand() {
 				?.let { (sleep, items) ->
 					Sleep.of(sleep, items)
 				}
-				?.let { println(it) }
-
+				?.let { write(it) }
 	}
 }
